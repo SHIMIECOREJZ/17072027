@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадьба Дарья и Даниил — 17.07.2027</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(160deg, #faf6f0 0%, #f3ece2 50%, #efe4d5 100%);
+    min-height: 100vh;
+    color: #4a3f35;
+    padding: 40px 16px;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #e5d9c8;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(74, 63, 53, 0.12);
+    padding: 48px 36px;
+    text-align: center;
+  }
+
+  .date {
+    font-size: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #a8927a;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: normal;
+    color: #4a3f35;
+    margin-bottom: 6px;
+  }
+
+  h1 .amp {
+    font-style: italic;
+    color: #b08d57;
+    font-size: 34px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: #b08d57;
+    margin: 22px auto;
+  }
+
+  .question {
+    font-size: 22px;
+    margin-bottom: 26px;
+    color: #5c4f43;
+  }
+
+  .name-field {
+    width: 100%;
+    max-width: 320px;
+    padding: 13px 16px;
+    margin-bottom: 24px;
+    border: 1px solid #d8c9b4;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fffdf9;
+    text-align: center;
+    color: #4a3f35;
+  }
+
+  .name-field:focus { outline: none; border-color: #b08d57; }
+
+  .options { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+
+  .option {
+    width: 100%;
+    max-width: 360px;
+    padding: 15px 20px;
+    border: 1px solid #d8c9b4;
+    border-radius: 10px;
+    background: #fffdf9;
+    font-size: 17px;
+    font-family: inherit;
+    color: #4a3f35;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .option:hover { background: #f6ede1; border-color: #b08d57; transform: translateY(-2px); }
+
+  .option input { display: none; }
+  .option .radio {
+    width: 18px; height: 18px;
+    border: 2px solid #b08d57;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .option input:checked + .radio::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #b08d57;
+    border-radius: 50%;
+  }
+  .option.selected { background: #f6ede1; border-color: #b08d57; }
+
+  .vote-btn {
+    margin-top: 28px;
+    padding: 15px 46px;
+    background: #b08d57;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    font-size: 17px;
+    font-family: inherit;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .vote-btn:hover { background: #96754a; }
+  .vote-btn:disabled { background: #cfc3b2; cursor: not-allowed; }
+
+  .message { margin-top: 18px; font-size: 17px; color: #7a6a52; min-height: 24px; }
+
+  .show-results {
+    margin-top: 34px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #b08d57;
+    color: #8a6d43;
+    border-radius: 40px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .show-results:hover { background: #b08d57; color: #fff; }
+
+  .results {
+    margin-top: 24px;
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e5d9c8;
+    border-radius: 10px;
+    padding: 16px 20px;
+    background: #fffdf9;
+    display: none;
+  }
+
+  .results h3 {
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #8a6d43;
+    text-align: center;
+  }
+
+  .vote-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px dashed #e5d9c8;
+    font-size: 15px;
+  }
+  .vote-row:last-child { border-bottom: none; }
+  .vote-row .drink { color: #8a6d43; }
+
+  .empty { text-align: center; color: #a8927a; font-size: 15px; padding: 10px 0; }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 32px; }
+    h1 .amp { font-size: 26px; }
+    .container { padding: 36px 20px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="date">17 июля 2027</div>
+    <h1>Дарья <span class="amp">&amp;</span> Даниил</h1>
+    <div class="divider"></div>
+
+    <p class="question">Что будете пить?</p>
+
+    <input type="text" id="guestName" class="name-field" placeholder="Ваше имя" maxlength="40">
+
+    <div class="options">
+      <label class="option">
+        <input type="radio" name="drink" value="Белое вино">
+        <span class="radio"></span>Белое вино
+      </label>
+      <label class="option">
+        <input type="radio" name="drink" value="Красное вино">
+        <span class="radio"></span>Красное вино
+      </label>
+      <label class="option">
+        <input type="radio" name="drink" value="Шампанское">
+        <span class="radio"></span>Шампанское
+      </label>
+      <label class="option">
+        <input type="radio" name="drink" value="Крепкий алкоголь">
+        <span class="radio"></span>Крепкий алкоголь
+      </label>
+      <label class="option">
+        <input type="radio" name="drink" value="Морсы и лимонады">
+        <span class="radio"></span>Морсы и лимонады
+      </label>
+      <label class="option">
+        <input type="radio" name="drink" value="Чай и кофе">
+        <span class="radio"></span>Чай и кофе
+      </label>
+    </div>
+
+    <button class="vote-btn" id="voteBtn" onclick="vote()">Проголосовать</button>
+    <p class="message" id="message"></p>
+
+    <button class="show-results" onclick="toggleResults()">Кто проголосовал</button>
+
+    <div class="results" id="results">
+      <h3>Голоса гостей</h3>
+      <div id="resultsList"></div>
+    </div>
+  </div>
+
+<script>
+  // Подсветка выбранного варианта
+  document.querySelectorAll('.option input').forEach(function(input) {
+    input.addEventListener('change', function() {
+      document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+      input.closest('.option').classList.add('selected');
+    });
+  });
+
+  // Если этот гость уже голосовал с этого устройства — подставим имя
+  var savedName = localStorage.getItem('wedding_voted_name');
+  if (savedName) {
+    document.getElementById('guestName').value = savedName;
+  }
+
+  function vote() {
+    var name = document.getElementById('guestName').value.trim();
+    var drink = document.querySelector('input[name="drink"]:checked');
+    var message = document.getElementById('message');
+
+    if (!name) {
+      message.textContent = 'Пожалуйста, введите ваше имя.';
+      message.style.color = '#a0522d';
+      return;
+    }
+    if (!drink) {
+      message.textContent = 'Пожалуйста, выберите напиток.';
+      message.style.color = '#a0522d';
+      return;
+    }
+
+    var votes = JSON.parse(localStorage.getItem('wedding_votes') || '[]');
+
+    // Если гость с этого устройства уже голосовал — обновляем его выбор
+    var existing = votes.find(function(v) { return v.name.toLowerCase() === name.toLowerCase(); });
+    if (existing) {
+      existing.drink = drink.value;
+    } else {
+      votes.push({ name: name, drink: drink.value });
+    }
+
+    localStorage.setItem('wedding_votes', JSON.stringify(votes));
+    localStorage.setItem('wedding_voted_name', name);
+
+    message.textContent = 'Спасибо, ' + name + '! Ваш выбор учтён 💛';
+    message.style.color = '#7a6a52';
+
+    if (document.getElementById('results').style.display === 'block') {
+      renderResults();
+    }
+  }
+
+  function toggleResults() {
+    var block = document.getElementById('results');
+    if (block.style.display === 'block') {
+      block.style.display = 'none';
+    } else {
+      renderResults();
+      block.style.display = 'block';
+    }
+  }
+
+  function renderResults() {
+    var votes = JSON.parse(localStorage.getItem('wedding_votes') || '[]');
+    var list = document.getElementById('resultsList');
+    list.innerHTML = '';
+
+    if (votes.length === 0) {
+      list.innerHTML = '<p class="empty">Пока никто не проголосовал</p>';
+      return;
+    }
+
+    votes.forEach(function(v) {
+      var row = document.createElement('div');
+      row.className = 'vote-row';
+      row.innerHTML = '<span>' + escapeHtml(v.name) + '</span><span class="drink">' + escapeHtml(v.drink) + '</span>';
+      list.appendChild(row);
+    });
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+</script>
+</body>
+</html>
